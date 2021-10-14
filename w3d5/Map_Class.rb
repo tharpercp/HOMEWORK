@@ -11,10 +11,12 @@ class Map
                 @map << [key, value]
             end
         end
+        value
     end
 
     def get(key)
-        self.each { |kv| return kv if kv[0] == key }
+        self.each { |kv| return kv[1] if kv[0] == key }
+        nil
     end
             
 
@@ -23,7 +25,12 @@ class Map
     end
 
     def show
-        p self
+        deep_dup(map)
+    end
+
+    def deep_dup(arr)
+        arr.map { |el| el.is_a?(Array) ? deep_dup(el) : el }
+      end  
     end
 end
 

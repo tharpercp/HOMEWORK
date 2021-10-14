@@ -46,6 +46,7 @@ def below_average_years
   #with the count of movies scoring under 5 aliased as bad_movies,
   #in descending order
   # hint: use 'select', 'where', 'group', 'order'
+  b_a_y = Movie.select("COUNT(movies.*) as bad_movies, yr").where("movies.score < 5").group("movies.yr").order("COUNT(movies.*) DESC")
 
 end
 
@@ -55,6 +56,8 @@ def alphabetized_actors
   # Note: Ubuntu users may find that special characters
   # are alphabetized differently than the specs.
   # This spec might fail for Ubuntu users. It's ok!
+
+  alpha_actors = Actor.select("actors.*").order("actors.name").limit("10")
 
 end
 

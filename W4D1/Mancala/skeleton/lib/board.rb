@@ -28,28 +28,27 @@ class Board
   end
 
   def make_move(start_pos, current_player_name)
-    stones = cups[start_pos].length 
-    @cups[start_pos].clear
-    i = start_pos + 1
-    while stones > 0
-      i = 0 if i > 13
-      current = i 
-      if current == 6
-        @cups[6] << :stone if current_player_name == @name1
-        stones -= 1
-        i += 1
-      elsif current == 13
-        @cups[13] << :stone if current_player_name == @name2
-        stones -= 1
-        i += 1
+    # empties cup
+    stones = @cups[start_pos]
+    @cups[start_pos] = []
+
+    # distributes stones
+    cup_idx = start_pos
+    until stones.empty?
+      cup_idx += 1
+      cup_idx = 0 if cup_idx > 13
+      # places stones in the correct current player's cups
+      if cup_idx == 6
+        @cups[6] << stones.pop if current_player_name == @name1
+      elsif cup_idx == 13
+        @cups[13] << stones.pop if current_player_name == @name2
       else
-        @cups[current] << :stone
-        stones -= 1
-        i += 1
+        @cups[cup_idx] << stones.pop
       end
     end
+
     render
-    next_turn(current)
+    next_turn(cup_idx)
   end
 
   

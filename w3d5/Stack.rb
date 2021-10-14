@@ -5,6 +5,7 @@ class Stack
 
     def push(el)
       @store.push(el)
+      el
     end
 
     def pop
@@ -12,6 +13,6 @@ class Stack
     end
 
     def peek
-      @store.first
+      @store.last
     end
   end

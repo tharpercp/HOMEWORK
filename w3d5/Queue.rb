@@ -4,11 +4,11 @@ class Queue
     end
 
     def dequeue
-        @store.pop
+        @store.shift
     end
 
     def enqueue(el)
-        @store.unshift(el)
+        @store.push(el)
         self
     end
 
