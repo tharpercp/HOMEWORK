@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const handleFavoriteSubmit = (e) => {
   e.preventDefault();
 
-const favoriteInput = documnet.querySelector(".favorite-input");
+const favoriteInput = document.querySelector(".favorite-input");
 
 const favorite = favoriteInput.value;
 favoriteInput.value = "";
@@ -28,6 +28,20 @@ li.textContent = favorite;
 const favoritesList = document.getElementById("sf-places")
 favoritesList.appendChild(li);
 };
+
+const listSubmitButton=document.querySelector(".favorite-submit");
+listSubmitButton.addEventListener("click",handleFavoriteSubmit);
+const showPhotoForm=(e)=>{
+  const photoFormDiv=document.querySelector(".photo-form-container");
+  if(photoFormDiv.className==="photo-form-container"){
+    photoFormDiv.className="photo-form-container hidden";
+  } else {
+    photoFormDiv.className="photo-form-container";
+  }
+};
+    
+    
+    const photoFormShowButton=document.querySelector(".photo-show-button");photoFormShowButton.addEventListener("click",showPhotoForm);const handlePhotoSubmit=(e)=>{e.preventDefault();const photoUrlInput=document.querySelector(".photo-url-input");const photoUrl=photoUrlInput.value;photoUrlInput.value="";const newImg=document.createElement("img");newImg.src=photoUrl;const newPhotoLi=document.createElement("li");newPhotoLi.appendChild(newImg);const dogPhotosList=document.querySelector(".dog-photos");dogPhotosList.appendChild(newPhotoLi);};const photoSubmitButton=document.querySelector(".photo-url-submit");photoSubmitButton.addEventListener("click",handlePhotoSubmit);});
 
 
 
