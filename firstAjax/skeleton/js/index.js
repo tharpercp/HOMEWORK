@@ -2,14 +2,17 @@ console.log("Hello from the JavaScript console!");
 
 // Your AJAX request here
 $.ajax({
-    url: 'http://api.openweathermap.org/data/2.5/weather?q=new%20york,US&appid=bcb83c4b54aee8418983c2aff3073b3b',
     type: 'GET',
-    success: function(widgetData) {
+    url: 'http://api.openweathermap.org/data/2.5/weather?q=new%20york,US&appid=bcb83c4b54aee8418983c2aff3073b3b',
+    
+    success(data) {
       console.log('Here are the fetched json parameters of the widget:');
-      console.log(widgetData);
+      console.log(data);
     },
-    error: function(errMsg) {
-      console.log(errMsg);
+    error: function() {
+      console.log("An error has occurred.");
     }
   });
 // Add another console log here, outside your AJAX request
+
+console.log("THE AJAX has been dispatched.")
